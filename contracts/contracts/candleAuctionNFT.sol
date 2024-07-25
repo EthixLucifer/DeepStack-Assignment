@@ -23,4 +23,3 @@ contract NFT is ERC721URIStorage, Ownable {
     }
 }
 
-// NFT Amoy Address: 0xa7526adcDc553Bb9588fAaB780c6d93C4Db39df4
