@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import ItemList from "./components/ItemList";
+import ListNewItem from "./components/ListNewItem";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Deepstack
-        </a>
+      <header className="bg-gray-800 text-white p-4">
+        <h1 className="text-3xl">NFT Auction</h1>
       </header>
+      <main className="p-4">
+        <ListNewItem />
+        <ItemList />
+      </main>
     </div>
   );
 }

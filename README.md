@@ -1,78 +1,76 @@
-# 1. For Smart Contract Setup... Go to Contracts Directory
-Accounts, Demo Private Key for Test Purpose, and APIs are already present in the respective files.
+# Smart Contract Setup
 
-Polygon Amoy Testnet is being Used for Contract Deployment.
+## Overview
+This project uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
 
-There are Two Smart Contracts: 
+1. **candleAuctionNFT.sol**: This contract mints NFTs for the items listed in the auction and transfers them to the CandleAuction contract.
+2. **deepstack.sol**: This contract lists items for auction, handles bidding, and transfers NFTs to the highest bidder using the Chainlink VRF2.5 Oracle.
 
-candleAuctionNFT.sol
-This smart contract is used to mint NFTs of the items listed in the auction and transfer them to the CandleAuction Contract.
+## Prerequisites
+Accounts, demo private keys for testing purposes, and APIs are already provided in the respective files.
 
-deepstack.sol
-This smart contract is used to list the items for auction, bid on the items, and transfer the NFTs to the highest bidder by following Candle Auction via using the Chainlink VRF2.5 Oracle.
+## Steps to Deploy
 
-One Only needs to execute commands in the given following order:
+1. Navigate to the contracts directory:
+    ```sh
+    cd contracts
+    ```
 
-cd contracts 
+2. Install dependencies:
+    ```sh
+    npm install
+    ```
 
-npm install
+3. Navigate to the Ignition modules directory:
+    ```sh
+    cd contracts/ignition/modules
+    ```
 
-cd contracts/ignition/modules
+4. **Chainlink VRF2.5 Oracle Setup**:
+    - Get the subscription ID for the Chainlink VRF2.5 Oracle and fund it with LINK tokens using the Chainlink faucet.
+    - Retrieve the Chainlink VRF 2.5 configuration from [Chainlink VRF2.5 Documentation](https://docs.chain.link/vrf/v2-5/supported-networks#polygon-amoy-testnet).
+    - Update the following values in `deploy.js`:
+      ```javascript
+      vrfCoordinator,
+      keyHash,
+      subscriptionId,
+      callbackGasLimit,
+      requestConfirmations
+      ```
+    *(For the purpose of assignment evaluation, this step has already been completed.)*
 
-get the subscription Id for the Chainlink VRF2.5 Oracle and Fund via the chainlink faucet LINK tokens your Subscription. (For the Purpose of Assignment Evaluation this step has been done already, no need to do this step)
+5. Deploy the module:
+    ```sh
+    npx hardhat ignition deploy ./ignition/modules/deploy.js --network amoy
+    ```
+    This command will deploy the module and provide the addresses of the deployed contracts on the Amoy testnet. Example output:
+    ```
+    Batch #1
+      Executed CandleAuctionModule#NFT
 
+    Batch #2
+      Executed CandleAuctionModule#CandleAuction
 
-Get the Chainlink VRF 2.5 Configuration from Here (https://docs.chain.link/vrf/v2-5/supported-networks#polygon-amoy-testnet) and 
-edit the respected values in deploy.js (For the Purpose of Assignment Evaluation this step has been done already, no need to do this step)
+    Batch #3
+      Executed CandleAuctionModule#NFT.transferOwnership
 
-    vrfCoordinator,
-    keyHash,
-    subscriptionId,
-    callbackGasLimit,
-    requestConfirmations
+    [ CandleAuctionModule ] successfully deployed 🚀
 
+    Deployed Addresses:
+    CandleAuctionModule#NFT - 0x65D16498c3fEA88cc9dD7Fb5297719A17fB56245
+    CandleAuctionModule#CandleAuction - 0x1a96FF49507d9f70ad2A6404b69b36b8FAb94AA7
+    ```
+    *(For the purpose of assignment evaluation, this step has already been completed.)*
 
-npx hardhat ignition deploy ./ignition/modules/deploy.js --network amoy 
+6. Add the deployed CandleAuction contract address as a consumer on the Chainlink VRF2.5 Oracle subscription ID page: [Chainlink VRF Consumer Page](https://vrf.chain.link/polygon-amoy/4770084190029772705768595926798226884560589758950304855731850812408104746629).
 
-This command will give Deploy the module and give address of the deployed contract on the Amoy testnet. like the below example (For the Purpose of Assignment Evaluation this step has been done already, no need to do this step)
+# Frontend Setup
 
-
-Batch #1
-  Executed CandleAuctionModule#NFT
-
-Batch #2
-  Executed CandleAuctionModule#CandleAuction
-
-Batch #3
-  Executed CandleAuctionModule#NFT.transferOwnership
-
-[ CandleAuctionModule ] successfully deployed 🚀
-
-Deployed Addresses
-
-CandleAuctionModule#NFT - 0x65D16498c3fEA88cc9dD7Fb5297719A17fB56245
-CandleAuctionModule#CandleAuction - 0x1a96FF49507d9f70ad2A6404b69b36b8FAb94AA7
-
-Take the deployed address of the CandleAuction smart contract and add it as consumer in the Subscription Id page of the Chainlink VRF2.5 Oracle. (https://vrf.chain.link/polygon-amoy/4770084190029772705768595926798226884560589758950304855731850812408104746629)
-
-
-
-
-# Getting Started with Frontend Section
-
+## Getting Started
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-
-
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes. You may also see any lint errors in the console.
