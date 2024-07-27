@@ -1,16 +1,18 @@
 # Smart Contract Setup
 
 ## Overview: Chainlink VRF2.5 Based Candle Auction Dapp
-DeepStack Candle Auction uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
-```    In case metamask gives Internal JSON RPC Error simply go to setting -> Advanced -> Clear Activity Tab
-  ```
-```    Also ensure to login into the Admin wallet Address for run administrative authorized tasks. It's Metamask private key is provided in the hardhat.config.js
-  ```
+1. DeepStack Candle Auction uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
+2. In case metamask gives Internal JSON RPC Error simply go to setting -> Advanced -> Clear Activity Tab
+
+3. Also ensure to login into the Admin wallet Address for run administrative authorized tasks. It's Metamask private key is provided in the hardhat.config.js
+ 
 1. **candleAuctionNFT.sol**: This contract mints NFTs for the items listed in the auction and transfers them to the CandleAuction contract.
 2. **deepstack.sol**: This contract lists items for auction, handles bidding, and transfers NFTs to the highest bidder using the Chainlink VRF2.5 Oracle.
 
 ## Prerequisites
 Accounts, demo private keys for testing purposes, and APIs are already provided in the respective files.
+
+1. NPM and Node.js are required to install the dependencies and run the frontend.
 
 ## Steps to Deploy
 
