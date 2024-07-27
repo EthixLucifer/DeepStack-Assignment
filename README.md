@@ -1,6 +1,6 @@
 # Smart Contract Setup
 
-## Overview
+## Overview: Chainlink VRF2.5 Based Candle Auction Dapp
 DeepStack Candle Auction uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
 ```    In case metamask gives Internal JSON RPC Error simply go to setting -> Advanced -> Clear Activity Tab
   ```
