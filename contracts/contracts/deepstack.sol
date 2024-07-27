@@ -16,8 +16,6 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";  // For NPM
-// import "@openzeppelin/contracts/security/ReentrancyGuard.sol"; //For Remix 
-
 import "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 import "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 import "./candleAuctionNFT.sol";
@@ -168,7 +166,7 @@ contract CandleAuction is VRFConsumerBaseV2Plus, IERC721Receiver, ReentrancyGuar
         emit RequestFulfilled(requestId, randomWords);
 
         uint256 _itemId = requestIdToItemId[requestId];
-        uint256 randomBlocks = 20 + (randomWords[0] % 11); // 20 to 30 blocks
+        uint256 randomBlocks = 80 + (randomWords[0] % 11); // 20 to 30 blocks
         auctions[_itemId].endTime = auctions[_itemId].startTime + randomBlocks;
         emit AuctionStarted(auctions[_itemId].endTime, items[_itemId].itemId, items[_itemId].itemName);
     }
@@ -195,6 +193,7 @@ contract CandleAuction is VRFConsumerBaseV2Plus, IERC721Receiver, ReentrancyGuar
      */
     function withdraw(uint256 _itemId) public nonReentrant returns (bool) {
         uint256 amount = auctions[_itemId].bids[msg.sender];
+        require(msg.sender != itemWinners[_itemId], "You have won this item NFT in an Auction");
         if (amount > 0) {
             auctions[_itemId].bids[msg.sender] = 0;
 

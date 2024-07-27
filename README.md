@@ -1,8 +1,11 @@
 # Smart Contract Setup
 
 ## Overview
-This project uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
-
+DeepStack Candle Auction uses the Polygon Amoy Testnet for contract deployment. There are two smart contracts involved:
+```    In case metamask gives Internal JSON RPC Error simply go to setting -> Advanced -> Clear Activity Tab
+  ```
+```    Also ensure to login into the Admin wallet Address for run administrative authorized tasks. It's Metamask private key is provided in the hardhat.config.js
+  ```
 1. **candleAuctionNFT.sol**: This contract mints NFTs for the items listed in the auction and transfers them to the CandleAuction contract.
 2. **deepstack.sol**: This contract lists items for auction, handles bidding, and transfers NFTs to the highest bidder using the Chainlink VRF2.5 Oracle.
 
@@ -57,8 +60,8 @@ Accounts, demo private keys for testing purposes, and APIs are already provided 
     [ CandleAuctionModule ] successfully deployed 🚀
 
     Deployed Addresses:
-    CandleAuctionModule#NFT - 0x65D16498c3fEA88cc9dD7Fb5297719A17fB56245
-    CandleAuctionModule#CandleAuction - 0x1a96FF49507d9f70ad2A6404b69b36b8FAb94AA7
+    CandleAuctionModule#NFT - 0x152616B7E738A0E671b9AFcC9c956b97d2b96Bf3
+    CandleAuctionModule#CandleAuction - 0xa9dc1e9c25949DEc687C93619d9a26BFB4702F32
     ```
     *(For the purpose of assignment evaluation, this step has already been completed.)*
 
@@ -66,11 +69,10 @@ Accounts, demo private keys for testing purposes, and APIs are already provided 
 
 # Frontend Setup
 
-## Getting Started
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `cd src`
 
-## Available Scripts
-In the project directory, you can run:
+### `npm install`
 
 ### `npm start`
+
 Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes. You may also see any lint errors in the console.
